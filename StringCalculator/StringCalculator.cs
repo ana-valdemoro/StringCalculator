@@ -18,11 +18,11 @@ namespace StringCalculator.Business {
         private static int[] Return_Numbers_in_Array_format(string numbers)
         {
             string[] separators = new string[] { ",", "\n" };
-            string custom_delimiter = Get_custom_delimiter(numbers);
-            if (custom_delimiter != "")
+            string customDelimiter = Get_custom_delimiter(numbers);
+            if (customDelimiter != "")
             {
-                separators[0] = custom_delimiter;
-                numbers = numbers.Substring(numbers.IndexOf("\n") + 1);
+                separators[0] = customDelimiter;
+                numbers = numbers.Substring(numbers.IndexOf("\n", StringComparison.Ordinal) + 1);
             }
             string[] arrayNumbers = numbers.Split(separators, StringSplitOptions.None);
             return  Array.ConvertAll(arrayNumbers, int.Parse); ;
@@ -30,10 +30,10 @@ namespace StringCalculator.Business {
         private static string Get_custom_delimiter(string numbers)
         {
             string delimiter = "";
-            int startPosition = numbers.IndexOf("//");
+            int startPosition = numbers.IndexOf("//", StringComparison.Ordinal);
             if (startPosition == 0)
             {
-                int lastPosition = numbers.IndexOf("\n");
+                int lastPosition = numbers.IndexOf("\n", StringComparison.Ordinal);
                 delimiter = numbers.Substring(startPosition + 2, lastPosition - 2);
             }
             return delimiter;
