@@ -1,0 +1,10 @@
+
+\.vscode/
+
+GameOfLife/js/node_modules/
+
+
+.vs
+bin/
+obj/
+*.sln.DotSettings.user
